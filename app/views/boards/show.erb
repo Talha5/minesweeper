@@ -1,0 +1,30 @@
+<div>
+  <%= link_to 'View all boards', boards_path %>
+  <br />
+  <h1>Board: <%= @board.name %></h1>
+  <h3>Email: <%= @board.email %></h3>
+  <h3>Dimensions: <%= @board.height %> x <%= @board.width %></h3>
+  <h3>Cells: <%= @board.height * @board.width %></h3>
+  <h3>Mines: <%= @board.board_mines.count %></h3>
+  <h3>Created At: <%= @board.created_at.strftime("%d %b %y %H:%M:%S") %></h3>
+
+  <div class="board-table">
+    <table>
+      <tbody>
+      <% @board_matrix.each do |row| %>
+        <tr>
+          <% row.each do |col| %>
+            <td>
+              <%- if col == 1 %>
+                <div class="cell-bomb"><i class="fa-solid fa-bomb"></i></div>
+              <% else %>
+                <div class="cell-empty">️</div>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<h1>New Board</h1>
+
+<%= form_with model: @board, local: true, data: {turbo: false} do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :email %><br>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :width %><br>
+    <%= form.number_field :width %>
+  </div>
+
+  <div>
+    <%= form.label :height %><br>
+    <%= form.number_field :height %>
+  </div>
+
+  <div>
+    <%= form.label :mines_count %><br>
+    <%= form.number_field :mines_count %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+<br />
+<br />
+
+<div>
+  <h2>Recent 10 Boards</h2>
+  <%#= render :partial => '/partials/board_table', :locals => { :boards => @recent_boards } %>
+  <%#= render 'partials/board_table', :boards => @recent_boards %>
+  <%#= render partial: '/partials/board_table', locals: { boards: @recent_boards } %>
+  <table cellspacing="5px">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Created At</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @recent_boards&.each do |board| %>
+      <tr>
+        <td><%= board.name %></td>
+        <td><%= board.email %></td>
+        <td><%= board.created_at.strftime("%d %b %y %H:%M:%S") %></td>
+        <td><%= link_to 'View', board %></td>
+      </tr>
+    <% end %>
+    </tbody>
+        <tfoot>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Created At</th>
+          <th>Action</th>
+        </tr>
+        </tfoot>
+  </table>
+  <br />
+  <%= link_to 'View all boards', boards_path %>
+</div>

@@ -1,0 +1,38 @@
+<div>
+  <%= link_to 'Home Page', root_path %>
+  <h2>All Boards</h2>
+  <table cellspacing="5px">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Dimension</th>
+      <th>Mines</th>
+      <th>Created At</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @boards&.each do |board| %>
+      <tr>
+        <td><%= board.name %></td>
+        <td><%= board.email %></td>
+        <td><%= board.width %> x <%= board.height %></td>
+        <td><%= board.board_mines.count %></td>
+        <td><%= board.created_at.strftime("%d %b %y %H:%M:%S") %></td>
+        <td><%= link_to 'View', board %></td>
+      </tr>
+    <% end %>
+    </tbody>
+        <tfoot>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Dimension</th>
+          <th>mines</th>
+          <th>Created At</th>
+          <th>Action</th>
+        </tr>
+        </tfoot>
+  </table>
+</div>
