@@ -16,7 +16,7 @@ class BoardsController < ApplicationController
     board_service = BoardService.new
     @board_matrix = board_service.add_mines @board, board_params[:mines_count].to_i
 
-    redirect_to board_path @board.id\
+    redirect_to board_path @board.id
   end
 
   def show
