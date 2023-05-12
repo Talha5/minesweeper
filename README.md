@@ -1,24 +1,14 @@
-# README
+# Minesweeper Board Generation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Algorithm Approach
+ - When the board is created, we are calling `BoardService` to generate the mines with input `mines_count`.
+ - The service generates matrix for the given board (in-case some mines are already generated) and validates whether board can fill more mines or not, if not return the filled matrix.
+ - Afterwards, We check if given count is greater than available cells, if yes, set count to max available cells
+ - In mines generation we exclude available cells from matrix and fill available cells with mines according to `count` and return DB create-able array of hash for mines.
+ - afterwards, we update current matrix with filled mines.
 
-Things you may want to cover:
+# Run server
+ - Run `bin/rails s` to run the server
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Test cases:
+ - Run `rspec` to run test cases.
